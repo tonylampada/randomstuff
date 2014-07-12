@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSON</title>
+</head>
+<body>
+	<input type="button" id="buscar" value="Testar Web Service">
+
+	<div id="imagens"></div>
+
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#buscar").click(function(){
+				jQuery.support.cors = true;
+
+				$("#imagens").html("<img src='carregando.gif' />");
+
+				var params = [];
+
+				//Montando os parâmetros!
+				params[0] = 'xxxxxxxxxxxx'; //Token
+				// params[1] = 'user'; //usuario
+				// params[2] = '45caf9933bcabe07427af2d6d0f11zf6'; //senha
+
+				var namespace = 'http://25.163.189.215/WSTeste/',
+					urlSep    = '/',
+				    postSep   = '%22',   
+				    dllName   = 'WSTeste.dll',
+				    context   = 'datasnap',
+				    rest      = 'rest',
+				    method    = 'GetManutencaoProgramada',
+				    apiClass  = 'TDMServerMethods';
+
+				var url = namespace + dllName + urlSep + context + urlSep + rest + urlSep + apiClass + urlSep + postSep + method + postSep + urlSep;
+
+				var dataParam = '';
+
+				if (params){
+
+				    dataParam = {_parameters: params};
+				}
+
+				//Executando a requisição ajax ao servidor do Workflow Service!   
+				$.ajax(
+					{
+					  crossDomain: true,
+					  type: 'POST',
+					  url: url,
+					  data: JSON.stringify( dataParam ),
+					  contentType: 'application/json',
+					  accepts: 'application/json' ,
+					  cache: false,
+					  dataType: 'json',
+					  async: false,
+					  beforeSend: function ( xhr ) {
+					         xhr.setRequestHeader('Content-Type', 'text/plain');
+					         xhr.withCredentials = true;
+					     },                             
+					  success: function(data) {
+					      
+					      //Caso seja definida alguma função para retorno através do callback,
+					      // eu executo agora!
+					      // if (callBack)
+					      //     callBack(data);
+					      
+					      //Repassando o objeto para a variável da funçao, isso é necessário, 
+					      //porque o objeto data só faz parte do escopo dessa função.
+					      jsonObject = JSON.parse(JSON.stringify(data));
+
+					      if (jsonObject.result[0].return){
+					      	$("#imagens").html("Sucesso");		
+					      }
+					      else{
+					      	$("#imagens").html("Falha");	
+					      }
+					      
+					  },
+					  error: function(msg){
+					      
+					      //Retornando a mensagem de erro!
+					      var msgErro = msg.statusText;
+					      jsonObject = {msgErro : msgErro, reqError : true};
+
+					  }
+
+					});
+			});
+		});
+	</script>
+</body>
+</html>
