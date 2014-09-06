@@ -7,13 +7,19 @@
       
         $scope.fileChanged = function(elm){
           var file = elm.files[0];
+          var reader = new FileReader();
+          reader.onload = function(evt){
+            content = reader.result;
+            $scope.$digest(); //pq a leitura do arquivo eh assincrona
+          }
         };
         
       }
     </script>
   </head>
   <body ng-app ng-controller="MyCtrl">
+    escolhe um txt pequeno...
     <input type="file" onchange="angular.element(this).scope().fileChanged(this)">
-    <p>{{content}}
+    <p>{{content}}</p>
   </body>
 </html>
