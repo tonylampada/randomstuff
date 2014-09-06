@@ -5,7 +5,25 @@
     <script>
       function MyCtrl($scope){
       
-
+        var _p=1;
+        $scope.pagination = {
+          get page(){
+            return _p;
+          },
+          set page(p){
+            if(p >= 1 && p <= 10){
+              _p = p;
+            }
+          }
+        };
+        
+        $scope.prev = function(){
+          $scope.pagination.page--;
+        };
+        
+        $scope.next = function(){
+          $scope.pagination.page++;
+        };
       }
     </script>
   </head>
@@ -21,6 +39,13 @@
       
       //só eu que não sabia disso??
     </textarea>
+    
+    <p>Um uso interessante pra isso:</p>
+    <div>
+      <button ng-click="prev()">&lt;</button>
+      <input type="text" ng-model="pagination.page">
+      <button ng-click="next()">&gt;</button>
+    </div>
     
   </body>
 </html>
