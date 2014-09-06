@@ -20,7 +20,10 @@
   </head>
   <body ng-app ng-controller="MyCtrl">
     escolhe um txt pequeno...
-    <input type="file" onchange="angular.element(this).scope().fileChanged(this)">
+    
+    <!-- Muito obrigado cabeça de ovo https://egghead.io/lessons/angularjs-file-uploads -->
+    <input type="file" onchange="angular.element(this).scope().fileChanged(this)"> 
+    
     <p>{{content}}</p>
   </body>
 </html>
