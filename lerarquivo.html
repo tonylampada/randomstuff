@@ -9,7 +9,7 @@
           var file = elm.files[0];
           var reader = new FileReader();
           reader.onload = function(evt){
-            content = reader.result;
+            $scope.content = reader.result;
             $scope.$digest(); //pq a leitura do arquivo eh assincrona
           }
         };
