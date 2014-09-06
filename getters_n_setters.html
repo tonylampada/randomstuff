@@ -11,7 +11,7 @@
             return _p;
           },
           set page(p){
-            if(p >= 1 && p <= 10){
+            if(p >= 1 && p <= 20){
               _p = p;
             }
           }
@@ -43,7 +43,7 @@
     <p>Um uso interessante pra isso:</p>
     <div>
       <button ng-click="prev()">&lt;</button>
-      <input type="text" ng-model="pagination.page">
+      <input type="text" ng-model="pagination.page" style="width:20px">
       <button ng-click="next()">&gt;</button>
     </div>
     
