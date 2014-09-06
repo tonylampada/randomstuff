@@ -12,6 +12,7 @@
             $scope.content = reader.result;
             $scope.$digest(); //pq a leitura do arquivo eh assincrona
           }
+          reader.readAsText(file);
         };
         
       }
