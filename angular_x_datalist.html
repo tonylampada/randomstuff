@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Socorro Tony</title>
+    <script type="application/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
+    <script type="application/javascript">
+        angular.module('sismic_edi', []);
+ 
+        angular.module('sismic_edi').config(function ($interpolateProvider) {
+            $interpolateProvider.startSymbol('{_').endSymbol('_}');
+        });
+ 
+        angular.module('sismic_edi').controller('Embarque', ['$scope', '$log', function ($scope, $log) {
+            $scope.cargo_escolhido = null;
+ 
+            $scope.lista = [
+                {nome: 'mario', idade: 37, cargo: null},
+                {nome: 'tamires', idade: 27, cargo: null}
+            ];
+ 
+            $scope.mudarCargo = function (indice) {
+                $log.info(indice);
+                $log.info($scope.cargo_escolhido);
+                $scope.lista[indice].cargo = $scope.cargo_escolhido;
+            }
+        }]);
+ 
+    </script>
+</head>
+<body ng-app="sismic_edi" ng-controller="Embarque">
+ 
+ 
+<datalist id="cargo">
+    <option value="0001">Analista</option>
+    <option value="0002">Desenvolvedor</option>
+    <option value="0003">Testador</option>
+</datalist>
+ 
+<table>
+    <tr>
+        <th>Nome:</th>
+        <th>Idade:</th>
+        <th>Selecione:</th>
+        <th>Cargo:</th>
+    </tr>
+    <tr ng-repeat="item in lista">
+        <td>{_ item.nome _}</td>
+        <td>{_ item.idade _}</td>
+        <td><input ng-model="cargo_escolhido" ng-change="mudarCargo($index)" list="cargo"></td>
+        <td>{_ item.cargo _}</td>
+    </tr>
+</table>
+</body>
+</html>
