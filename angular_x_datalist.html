@@ -20,11 +20,11 @@
                 {nome: 'tamires', idade: 27, cargo: null}
             ];
  
-            $scope.mudarCargo = function (indice) {
-                $log.info(indice);
-                $log.info($scope.cargo_escolhido);
-                $scope.lista[indice].cargo = $scope.cargo_escolhido;
-            }
+//            $scope.mudarCargo = function (indice) {
+//                $log.info(indice);
+//                $log.info($scope.cargo_escolhido);
+//                $scope.lista[indice].cargo = $scope.cargo_escolhido;
+//            }
         }]);
  
     </script>
@@ -48,7 +48,7 @@
     <tr ng-repeat="item in lista">
         <td>{_ item.nome _}</td>
         <td>{_ item.idade _}</td>
-        <td><input ng-model="cargo_escolhido" ng-change="mudarCargo($index)" list="cargo"></td>
+        <td><input ng-model="item.cargo" list="cargo"></td>
         <td>{_ item.cargo _}</td>
     </tr>
 </table>
