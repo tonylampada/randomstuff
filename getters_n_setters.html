@@ -28,7 +28,7 @@
     </script>
   </head>
   <body ng-app ng-controller="MyCtrl">
-    <p>Olha que locura, colocadigita isso num console javascript...</p>
+    <p>Olha que locura, digita isso num console javascript...</p>
     <textarea style="width:500px; height: 200px;">
       o = {a:1};  //nada de mais
       o = {a:1, get x(){return this.a++;}}; //cuma???
@@ -41,7 +41,11 @@
     </textarea>
     
     <p>Um uso interessante pra isso: veja como fica simples a implementação do prev() / next().</p>
-    <p> Além disso, o input: a) só permite digitar numeros; e b) não deixa o cara digitar nada fora do range [1-20]. Massa né</p>
+    <p> Além disso, note que o input: 
+    <br> a) só permite digitar numeros; e 
+    <br> b) não deixa o cara digitar nada que nao seja um numero entre [1-20].</p>
+    
+    <p>Nao foi necessario escrever nenhum tipo de codigo de validacao pra isso. Massa né :-)</p>
     <div>
       <button ng-click="prev()">&lt;</button>
       <input type="text" ng-model="pagination.page" style="width:20px">
