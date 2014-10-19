@@ -1,0 +1,120 @@
+<html>
+<head>
+	<script>
+
+	function build_date(y, m, d){
+		return new Date(y, m-1, d); //for javascript date objects: 0=january
+	}
+
+	function build_date2(y, m, d){
+		return new Date(y, m-1, d, 4, 0, 0);
+	}
+
+	function sample_build_date(){
+		d = build_date(2014, 10, 20);
+		console.log(d);
+	}
+
+	function sample_build_date2(){
+		d = build_date2(2014, 10, 20);
+		console.log(d);
+	}
+
+	function print_october_2014(){
+		var dates = [];
+		// build dates
+		for (var i=1; i<31; i++){
+			dates.push(build_date(2014, 10, i));
+		}
+		// print calendar
+		for (i=0; i<dates.length; i++){
+			console.log(dates[i].getDate());
+		}
+	}
+
+	function debug_october_2014(){
+		var dates = [];
+		// build dates
+		for (var i=1; i<31; i++){
+			dates.push(build_date(2014, 10, i));
+		}
+		// print calendar
+		for (i=0; i<dates.length; i++){
+			console.log(dates[i]);
+		}
+	}
+
+	function fixed_calendar(){
+		var dates = [];
+		// build dates
+		for (var i=1; i<31; i++){
+			dates.push(build_date2(2014, 10, i));
+		}
+		// print calendar
+		for (i=0; i<dates.length; i++){
+			console.log(dates[i].getDate());
+		}
+	}
+
+	</script>
+</head>
+<body>
+
+<h1>The duplicate date calendar bug</h1>
+
+<p>A few years ago I was required to fix a bug on a javascript calendar widget.
+It had monthly calendars nicely displayed in 7-column tables. But every once in a while users would see a duplicate date, like, [..., 7, 8, 9, 9, 11, 12, ...]</p>
+
+<p>WEIRD!</p>
+
+<p>This first time I saw this bug I was still unexperienced and it took me quite a while to fix it.
+It turned out I had to solve it again two more times, on different languages (Java, and Adobe Flex).</p>
+
+<p>The cause, is, as you might guess, daylight savings. I think people who invented daylight savings would probably have come up with a better idea it they knew how much damage they would cause to the IT industry :o)</p>
+
+<p>Anyway, if you you're scratching your head because of this very same bug, read on. This will probably help.</p>
+
+<p>We'll use javascript because, well, this is a browser anyway. But the same principle applies to pretty much any language.</p>
+
+<p>If you're building a calendar, chances are that you're building an array of date objects, created with some method like build_date(year, month, date).</p>
+
+<button onclick="sample_build_date()">sample_build_date() (look at the js console!)</button>
+
+<p>Cool, now, let's build an array with all dates of oct/2014, and then print our calendar</p>
+
+<button onclick="print_october_2014()">print_october_2014()</button>
+
+<p>There we go... <br>
+...<br>
+17<br>
+18<br>
+18<br>
+20<br>
+...<br>
+Well, that's what I get here at least (my time zone is BRST - you might get different results depending on your timezone).
+</p>
+
+<p>So, let's take a deeper look at those dates...</p>
+
+<button onclick="debug_october_2014()">debug_october_2014()</button>
+
+<p>
+Look! <br>
+Fri Oct 17 2014 00:00:00 GMT-0300 (BRT) <br>
+Sat Oct 18 2014 00:00:00 GMT-0300 (BRT) <br>
+<strong>Sat Oct 18 2014 23:00:00 GMT-0300 (BRT)</strong> <br>
+Mon Oct 20 2014 00:00:00 GMT-0200 (BRST) <br>
+</p>
+
+<p>Gotcha! Daylight savings tells us to set our clocks +1h on midnight of oct/19, which means, if it's 2014/10/18@23:59:59, then the next second will be 2014/10/19@01:00:00. There is no such thing as 2014/10/19@00:00:00, so the javascript interpreter understands you must be talking about 1h before 2014/10/19@01:00:00, which is 2014/10/18@23:00:00</p>
+
+<p>It turns out js is not the only one doing that (and it sounds about the right workaround. The bug is the daylight savings procedure per se - if you ask me anyway)</p>
+
+<p>But how to fix it? Just create date objects at, say, 4am, like...</p>
+
+<button onclick="sample_build_date2()">sample_build_date2()</button>
+<button onclick="fixed_calendar()">fixed_calendar()</button>
+
+<p>:-)</p>
+
+</html>
