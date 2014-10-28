@@ -17,3 +17,6 @@
 
 * [Djangular nóis manja](https://www.youtube.com/watch?v=01q8kF7OvzY&list=PLgMNBa0XaIgfqztpesaTVQehvDlLasgg9&index=1)(4 videos)
 
+# Dicas genéricas
+
+* [PEP8 com Git Hooks](https://seanmckaybeck.com/2014/08/20/pep8-git-hooks/?utm_source=O+Melhor+da+Internet&utm_campaign=78927fa3bd-o_melhor_da_internet_8&utm_medium=email&utm_term=0_7753d38e86-78927fa3bd-421439465)
