@@ -3,10 +3,10 @@
     <title>Teste - getters e setters em javascript</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.js"></script>
     <script>
-      function MyCtrl($scope){
-        $scope.joao = {nome: 'Joao da Silva', idade: 33};
-        $scope.jose = {nome: 'Jose de Camargo', idade: 50};
-      }
+    	angular.module('app', []).controller('MyCtrl', function($scope){
+	        $scope.joao = {nome: 'Joao da Silva', idade: 33};
+	        $scope.jose = {nome: 'Jose de Camargo', idade: 50};
+	    });
     </script>
   </head>
   <body ng-app ng-controller="MyCtrl">
