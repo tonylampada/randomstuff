@@ -9,7 +9,7 @@
 	    });
     </script>
   </head>
-  <body ng-app ng-controller="MyCtrl">
+  <body ng-app="app" ng-controller="MyCtrl">
 	<div ng-include="'detalhes_pessoa.html'" ng-repeat="pessoa in [joao]"></div>
 	<div ng-include="'detalhes_pessoa.html'" ng-repeat="pessoa in [jose]"></div>
 	<div ng-include="'detalhes_pessoa.html'" ng-init="pessoa = joao"></div>
