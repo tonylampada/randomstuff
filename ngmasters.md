@@ -23,5 +23,7 @@ Vamo que vamo!
 Tony Lâmpada
 
 PS: Dah uma olhada nas mensagens anteriores da lista, tem algumas informações importantes lá! Em particular, preciso que vc veja:
+
 sobre o usuario no Gitlab! --> https://groups.google.com/forum/?hl=en#!topic/ngmasters05/QmKkUyOJeng
+
 sobre o usuario no QMagico --> https://groups.google.com/forum/?hl=en#!topic/ngmasters05/0_8ZGUI9LZg
