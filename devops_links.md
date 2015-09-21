@@ -7,6 +7,7 @@
 * [AWS Resize instances (de EC2, nao de banco)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html)
 * [Loja de certificados https baratinhos](http://ssls.com)
 * [Gerenciar filas de emails no postfix](https://rtcamp.com/tutorials/mail/postfix-queue/)
+* [Configurar NTP](https://www.digitalocean.com/community/tutorials/how-to-set-up-time-synchronization-on-ubuntu-12-04)
 
 # Django
 
