@@ -8,6 +8,7 @@
 * [Loja de certificados https baratinhos](http://ssls.com)
 * [Gerenciar filas de emails no postfix](https://rtcamp.com/tutorials/mail/postfix-queue/)
 * [Configurar NTP](https://www.digitalocean.com/community/tutorials/how-to-set-up-time-synchronization-on-ubuntu-12-04)
+* [Gerenciar logs - logrotate](https://www.digitalocean.com/community/tutorials/how-to-manage-log-files-with-logrotate-on-ubuntu-12-10)
 
 # Django
 
