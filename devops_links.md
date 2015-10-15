@@ -12,5 +12,5 @@
 
 # Django
 
-* [django@production](https://github.com/unbit/uwsgi-docs/blob/master/tutorials/Django_and_nginx.rst)
+* [django@production / uwsgi - Dani Procida](https://github.com/unbit/uwsgi-docs/blob/master/tutorials/Django_and_nginx.rst)
 * [Flower](http://celery.readthedocs.org/en/latest/userguide/monitoring.html)
