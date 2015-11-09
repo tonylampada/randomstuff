@@ -1,0 +1,15 @@
+1) Orientação a objeto, responsabilidades, e comida italiana
+2) Diagramas CRC são ótimos pra comunicar arquitetura
+	- E vc deve fazê-los por preguiça.
+	- Codigo com API primeiro
+3) Sobre Coesão e Acoplamento [2]
+4) Processo bom é o processo que erra rápido e corrige rápido - (historia do liquibase)
+5) Integração contínua e as 3 leis da build
+6) TDD é uma questão de planejamento
+7) O ambiente de desenvolvimento é importante [3] = Djangular
+ 7.1) O projeto tem que ser fácil de clonar e começar a trabalhar!
+ IDÉIA: faz um help executável!
+
+ 7.2) Tente organizar seus componentes de modo que vc possa trabalhar neles de maneira isolada
+ 	Desenv web? Tenha um catalogo de componentes! - TPDD
+ 	Com ajax? - Tenha uma API mock!!
