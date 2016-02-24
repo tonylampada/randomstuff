@@ -1,0 +1,54 @@
+About Object orientation, responsibilities and italian food.
+
+It's been a while since I've been thinking about this and only a few days ago I was able to put it "on paper".
+
+It has to do with OO, responsibilities, collaboration/communication, and italian food.
+Here goes...
+
+When I started programming back in 2000 I had contact with this "object orientation" concept.
+Classes, attributes, methods, inheritance, polymorphism. Nice!
+People told me it was better to write code with that paradigm in mind.
+But, looking back, nobody explained to me why, exactly. Why OO is "better"?
+
+Time went by and I heard a metaphore that got stuck with me: if you use OO, your code will be less like spaghetti and more ravioli.
+Raviolis are good for you! Each ravioli does one thing, raviolis talk to other raviolis when needed, and your system becomes much more easy to maintain and improve.
+
+Except, in my experience, it wasn't quite like that.
+
+I have written AND read a lot of OO code. Lots of classes, inheritance, polymorphism, etc, it was all there.
+But still, sometimes, it had that strong smell of... spaghetti.
+
+As I gained more experience, I caught myself thinking more and more in terms of "responsibility" and "knowledge":
+
+Where should I put this method? Who should be responsible for this task?
+Mmm, this responsibility is in the wrong place, gotta refactor this.
+Whoops, this component was not supposed to know about that other one.
+(And please note that I'm using the word "component" with a very broad meaning. It could be an <input>, a java class, a python module, a javascript function. In this context, a component is any piece of software that has a responsibility, ok?)
+
+When you think about it a growing system even looks like a company. Sometimes you catch yourself thinking "Who should be the person/department responsible for this activity?" - Been there? I know I have.
+
+Anyway, after giving it some thought I came to the conclusion that thinking merely in terms of OO won't necessarily lead to "ravioli code".
+
+To make ravioli code, you need to see your software as a network of components that collaborate with each other.
+
+I think, ideally, this network should look like structure B below.
+
+* Each component has a well defined responsibility - otherwise you may end up with very big files that are a pain to scroll on.
+
+* Each component should know only a few neighbours - otherwise you get high coupling: Components loose the ability to vary independently. You change something here --> causes a bug over there.
+
+* Each component can be broken down into smaller components. There's nothing wrong with having another network of components inside one component.
+
+In our job, besides coding those responsibilities, we must decide who is responsible for what, and organize the network of components in a way that facilitates the communication among them and allows them to collaborate in an optimized fashion.
+
+Building good software is the art of beign the CEO of your system! :-)
+
+So... perhaps it will come a time where you'll teach some programming to a beginner.
+If that time comes, let me suggest one thing: before telling them about OO, inheritance, etc, consider talking about raviolis first. The ravioli is the important part.
+
+Before accepting OO like a dogma (like I did for many years), one should understand the reasoning behind it. Why break a system into smaller parts with well defined responsibilities as independent of each other as possible.
+The important thing to keep in mind is focus on the network, and optimizing the interaction between the network's elements. OO is just one tool to help you build that network.
+
+Because, if one is not thinking about raviolis since the beginning, some spaghetti will definitely pop up.
+
+You can be sure of that :-)
