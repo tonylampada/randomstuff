@@ -56,6 +56,6 @@ Vou mostrar um esqueleto para um projeto completo de front-end de aplicações w
 
 Tony Lâmpada é engenheiro de computação formado no ITA em 2003.
 Founder do FreedomSponsors.org: uma plataforma (open source) de crodfunding para software livre.
-Trabalha no QMágico: uma startup de tecnologia para educação, e ajuda pessoas a fazer sistemas web melhores com 
-seu curso online de AngularJS - o ng-masters.com.
+Trabalha como consultor independente construindo software de qualidade e ajudando empresas a fazer o mesmo. 
+Também ajuda pessoas a fazer sistemas web melhores com seu curso online de AngularJS - o ng-masters.com.
 Tony acredita que quem trabalha com TI e não está se divertindo é pq tá fazendo alguma coisa errada ;-)
