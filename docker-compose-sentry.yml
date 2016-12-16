@@ -77,6 +77,9 @@ services:
      - sentry-postgres:postgres
     command: "run cron"
 
-#(quando subir entra num sentry qqr e roda um "sentry upgrade" pra criar as tabelas no banco)
-# Depois va em /var/data/sentry/etc/sentry.conf.py e addiciona:
-# SENTRY_FEATURES['auth:register'] = False
+# docker-compose -f docker-compose-sentry.yml up
+# (quando subir entra num sentry qqr com "docker exec bash" e roda um "sentry upgrade" pra criar as tabelas no banco)
+# Depois copia o conteudo de /etc/sentry de um container pram /var/data/sentry/etc
+# Edita o /var/data/sentry/etc/sentry.conf.py/sentry.conf.py e addiciona:
+# SENTRY_FEATURES['auth:register'] = False # pra desabilitar 
+# descomenta os volumes acima e faz um docker-compose down / up.
