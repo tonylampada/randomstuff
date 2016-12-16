@@ -1,0 +1,68 @@
+version: '2'
+
+services:
+  sentry-redis:
+    image: redis
+
+  sentry-postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER:sentry
+      POSTGRES_PASSWORD:secret
+      POSTGRES_DBNAME: sentry
+      POSTGRES_DBUSER: sentry
+    volumes:
+     - /var/data/sentry/postgres:/var/lib/postgresql/data:rw
+
+  sentry:
+    image: sentry
+    environment:
+      SENTRY_SECRET_KEY:r3)=_$y66j0i+m4hilltnl%etf88-(15k+6tw_@!3_+5una#3a
+      SENTRY_POSTGRES_HOST: postgres
+      SENTRY_DB_USER: sentry
+      SENTRY_DB_PASSWORD: secret
+      SENTRY_REDIS_HOST: redis
+    depends_on:
+     - sentry-redis
+     - sentry-postgres
+    links:
+     - sentry-redis:redis
+     - sentry-postgres:postgres
+    ports:
+     - 9000:9000
+    stdin_open: true
+    tty: true
+
+  sentry-worker:
+    image: sentry
+    environment:
+      SENTRY_SECRET_KEY: r3)=_$y66j0i+m4hilltnl%etf88-(15k+6tw_@!3_+5una#3a
+      SENTRY_POSTGRES_HOST: postgres
+      SENTRY_DB_USER: sentry
+      SENTRY_DB_PASSWORD: secret
+      SENTRY_REDIS_HOST: redis
+    depends_on:
+     - sentry-redis
+     - sentry-postgres
+    links:
+     - sentry-redis:redis
+     - sentry-postgres:postgres
+    command: "run worker"
+
+  sentry-cron:
+    image: sentry
+    environment:
+      SENTRY_SECRET_KEY: r3)=_$y66j0i+m4hilltnl%etf88-(15k+6tw_@!3_+5una#3a
+      SENTRY_POSTGRES_HOST: postgres
+      SENTRY_DB_USER: sentry
+      SENTRY_DB_PASSWORD: secret
+      SENTRY_REDIS_HOST: redis
+    depends_on:
+     - sentry-redis
+     - sentry-postgres
+    links:
+     - sentry-redis:redis
+     - sentry-postgres:postgres
+    command: "run cron"
+
+#(quando subir entra num sentry qqr e roda um "sentry upgrade" pra criar as tabelas no banco)
