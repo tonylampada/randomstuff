@@ -17,11 +17,13 @@ services:
   sentry:
     image: sentry
     environment:
-      SENTRY_SECRET_KEY:r3)=_$y66j0i+m4hilltnl%etf88-(15k+6tw_@!3_+5una#3a
+      SENTRY_SECRET_KEY: xxxxxx
       SENTRY_POSTGRES_HOST: postgres
       SENTRY_DB_USER: sentry
       SENTRY_DB_PASSWORD: secret
       SENTRY_REDIS_HOST: redis
+#    volumes:  # Habilitar depois de copiar o conteudo de dentro de algum container
+#     - /var/data/sentry/etc:/etc/sentry
     depends_on:
      - sentry-redis
      - sentry-postgres
@@ -36,7 +38,7 @@ services:
   sentry-worker:
     image: sentry
     environment:
-      SENTRY_SECRET_KEY: r3)=_$y66j0i+m4hilltnl%etf88-(15k+6tw_@!3_+5una#3a
+      SENTRY_SECRET_KEY: dd
       SENTRY_POSTGRES_HOST: postgres
       SENTRY_DB_USER: sentry
       SENTRY_DB_PASSWORD: secret
@@ -47,6 +49,8 @@ services:
       SENTRY_EMAIL_PASSWORD: xxxxxx
       SENTRY_EMAIL_USE_TLS: "true"
       SENTRY_MAILGUN_API_KEY: key-xxxxxx
+#    volumes:  # Habilitar depois de copiar o conteudo de dentro de algum container
+#     - /var/data/sentry/etc:/etc/sentry
     depends_on:
      - sentry-redis
      - sentry-postgres
@@ -58,11 +62,13 @@ services:
   sentry-cron:
     image: sentry
     environment:
-      SENTRY_SECRET_KEY: r3)=_$y66j0i+m4hilltnl%etf88-(15k+6tw_@!3_+5una#3a
+      SENTRY_SECRET_KEY: xxxxxx
       SENTRY_POSTGRES_HOST: postgres
       SENTRY_DB_USER: sentry
       SENTRY_DB_PASSWORD: secret
       SENTRY_REDIS_HOST: redis
+#    volumes:  # Habilitar depois de copiar o conteudo de dentro de algum container
+#     - /var/data/sentry/etc:/etc/sentry
     depends_on:
      - sentry-redis
      - sentry-postgres
@@ -72,3 +78,5 @@ services:
     command: "run cron"
 
 #(quando subir entra num sentry qqr e roda um "sentry upgrade" pra criar as tabelas no banco)
+# Depois va em /var/data/sentry/etc/sentry.conf.py e addiciona:
+# SENTRY_FEATURES['auth:register'] = False
