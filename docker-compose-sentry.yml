@@ -41,6 +41,12 @@ services:
       SENTRY_DB_USER: sentry
       SENTRY_DB_PASSWORD: secret
       SENTRY_REDIS_HOST: redis
+      SENTRY_EMAIL_HOST: smtp.mailgun.org
+      SENTRY_EMAIL_PORT: 587
+      SENTRY_EMAIL_USER: postmaster@yourdomain.com
+      SENTRY_EMAIL_PASSWORD: xxxxxx
+      SENTRY_EMAIL_USE_TLS: "true"
+      SENTRY_MAILGUN_API_KEY: key-xxxxxx
     depends_on:
      - sentry-redis
      - sentry-postgres
