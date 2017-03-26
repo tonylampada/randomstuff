@@ -22,7 +22,7 @@ A very experienced *almost* full-stack web-developer.
 ## 0. Contact info
 
 * email - tonylampada@gmail.com
-* Phone/Whatsapp/Telegram: +55 12 981440013
+* Phone number / Whatsapp / Telegram: +55 12 981440013
 * [Facebook](http://facebook.com/tonylampada)
 * [Toptal](https://www.toptal.com/resume/tony-calleri-franca) (freelancer marketplace)
 
