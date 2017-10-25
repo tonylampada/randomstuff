@@ -1,10 +1,10 @@
-export CERTNAME=nginx   
+export CERTNAME=selfsigned   
 export CERTDAYS=3650
 
 # Adjust above to your needs
 
 
-sudo mkdir /etc/nginx/ssl
+sudo mkdir -p /etc/nginx/ssl
 sudo openssl req -x509 -nodes -days $CERTDAYS -newkey rsa:2048 -keyout /etc/nginx/ssl/$CERTNAME.key -out /etc/nginx/ssl/$CERTNAME.crt
 # Attention: commonname must match the domain name that will be used for the website
 
