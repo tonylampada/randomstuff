@@ -16,7 +16,7 @@ sudo docker run --detach \
 
 ```
 server {
-   server_name gitlab.memoreba.com.br;
+   server_name gitlab.example.com;
    listen 80
 
    location / {
@@ -31,4 +31,10 @@ server {
 ```
 ...
 gitlab_rails['gitlab_shell_ssh_port'] = 2222
+```
+
+Restart:
+
+```
+docker exec -it gitlab gitlab-ctl restart
 ```
