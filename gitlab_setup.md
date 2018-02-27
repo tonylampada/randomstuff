@@ -31,6 +31,15 @@ server {
 ```
 ...
 gitlab_rails['gitlab_shell_ssh_port'] = 2222
+...
+gitlab_rails['smtp_enable'] = true
+gitlab_rails['smtp_address'] = "smtp.mailgun.org"
+gitlab_rails['smtp_port'] = 587
+gitlab_rails['smtp_user_name'] = "postmaster@example.com"
+gitlab_rails['smtp_password'] = "xxxxxxxxx"
+gitlab_rails['smtp_domain'] = "example.com"
+gitlab_rails['smtp_authentication'] = "plain"
+gitlab_rails['smtp_enable_starttls_auto'] = true
 ```
 
 Restart:
