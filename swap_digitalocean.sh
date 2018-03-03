@@ -1,29 +1,28 @@
-# "atalho" pra https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04
+sudo su
 
-sudo swapon -s
+swapon -s
 free -m
 df -h
 
+fallocate -l 4G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
 
-sudo fallocate -l 4G /swapfile
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
-
-sudo swapon -s
-free -m
-
-sudo nano /etc/fstab
-# /swapfile   none    swap    sw    0   0
-
+echo /swapfile   none    swap    sw    0   0 >> /etc/fstab
 
 cat /proc/sys/vm/swappiness
 cat /proc/sys/vm/vfs_cache_pressure
 
-sudo sysctl vm.vfs_cache_pressure=50
-sudo sysctl vm.swappiness=10
+sysctl vm.vfs_cache_pressure=50
+sysctl vm.swappiness=10
 
-sudo nano /etc/sysctl.conf
+echo vm.swappiness=10 >> /etc/sysctl.conf
+echo vm.vfs_cache_pressure=50 >> /etc/sysctl.conf
 
-# vm.swappiness=10
-# vm.vfs_cache_pressure=50
+echo ---------------------------------------------
+swapon -s
+free -m
+cat /proc/sys/vm/swappiness
+cat /proc/sys/vm/vfs_cache_pressure
+cat /etc/fstab
