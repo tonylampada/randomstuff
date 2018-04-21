@@ -1,0 +1,10 @@
+sudo su
+cd /etc/postgresql/9.5/main
+
+nano postgresql.conf
+### faz isso:
+listen_addresses = '*' 
+
+nano pg_hba.conf
+### faz isso:
+host    all             all             0.0.0.0/0            md5
