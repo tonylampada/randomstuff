@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <title>Meu primeiro aplicativo Vue</title>
   <script src="https://unpkg.com/vue"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"-->
 
   <style type="text/css">
     .risca {
@@ -16,8 +16,8 @@
 <body>
   <div id="app" class="container" style="padding: 20px;">
     <span v-if="error">Erro: {{error}}</span>
-    <pre>coords1: {{coords}}</pre>
-    <h1> speed: {{speed}}</h1>
+    <h1> speed1: {{speed}}</h1>
+    <h1> speed1: {{speed}}</h1>
     <h1> count: {{count}}</h1>
     <pre>poserror: {{poserror}}</pre>
   </div>
@@ -54,9 +54,14 @@
           if(coords && lastCoords){
             const distance = calcDistance(lastCoords, coords)
             const Δt = (coords.ts - lastCoords.ts) / 3600000.0
-            return distance / Δt
+            return Math.round(distance / Δt)
           }
           return 0
+        },
+        speed2(){
+          const {coords} = this
+          const s = coords && coords.speed || 0
+          return Math.round(s * 3.6)
         }
       },
       methods: {
@@ -70,7 +75,7 @@
         },
         fetchPosition(){
           const options = {
-            enableHighAccuracy: !0,
+            enableHighAccuracy: true,
             maximumAge: 0
           }
           window.navigator.geolocation.watchPosition(this.setPosition, this.positionError, options);
