@@ -36,12 +36,10 @@
       methods: {
         initGeolocation(){
           var x = document.getElementById("demo");
-          function getLocation() {
-            if (window.navigator.geolocation) {
-              window.navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-              this.error = "Localização geográfica indisponível";
-            }
+          if (window.navigator.geolocation) {
+            window.navigator.geolocation.getCurrentPosition(showPosition);
+          } else {
+            this.error = "Localização geográfica indisponível";
           }
           function showPosition(position) {
             this.position = position
