@@ -15,45 +15,16 @@
 </head>
 <body>
   <div id="app" class="container" style="padding: 20px;">
-    <div class="field">
-      <label class="label">Name</label>
-      <div class="control">
-        <input class="input" 
-          type="text" 
-          placeholder="Text input"
-          v-model="novatarefa"
-          @keyup.enter="add()">
-      </div>
-    </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>To-do</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="tarefa in tarefasOrdenadas">
-          <td><input type="checkbox" v-model="tarefa.feita"></td>
-          <td :class="{risca: tarefa.feita}">{{tarefa.tarefa}}</td>
-          <td><button @click="remove(tarefa)"><span class="icon has-text-info">
-            <i class="fa fa-trash-o"></i></span></button></td>
-        </tr>
-      </tbody>
-    </table>
+    <span v-if="error">Erro: {{error}}</span>
+    <pre>{{position}}</pre>
   </div>
 
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        novatarefa: '',
-        tarefas: [
-          {tarefa: 'Lavar a roupa', feita: false, created: new Date()},
-          {tarefa: 'Trocar a fralda do neném', feita: true, created: new Date()},
-          {tarefa: 'Passear com o cachorro', feita: false, created: new Date()},
-        ]
+        error: '',
+        position: null,
       },
       computed: {
         tarefasOrdenadas(){
@@ -63,16 +34,23 @@
         }
       },
       methods: {
-        add: function(){
-          this.tarefas.push({tarefa: this.novatarefa, 
-                             feita: false,
-                             created: new Date()});
-        },
-        remove: function(tarefa){
-          var idx = this.tarefas.indexOf(tarefa);
-          this.tarefas.splice(idx, 1);
+        initGeolocation(){
+          var x = document.getElementById("demo");
+          function getLocation() {
+            if (window.navigator.geolocation) {
+              window.navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+              this.error = "Localização geográfica indisponível";
+            }
+          }
+          function showPosition(position) {
+            this.position = position
+          }
         }
       },
+      mounted(){
+        this.initGeolocation()
+      }
     });
   </script>
 </body>
