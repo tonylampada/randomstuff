@@ -16,7 +16,7 @@
 <body>
   <div id="app" class="container" style="padding: 20px;">
     <span v-if="error">Erro: {{error}}</span>
-    <pre>position: {{position}}</pre>
+    <pre>coords: {{coords}}</pre>
   </div>
 
   <script>
@@ -24,7 +24,7 @@
       el: '#app',
       data: {
         error: '',
-        position: null,
+        coords: null,
       },
       computed: {
         tarefasOrdenadas(){
@@ -37,13 +37,35 @@
         initGeolocation(){
           var x = document.getElementById("demo");
           if (window.navigator.geolocation) {
+            this.fetchPosition()
             window.navigator.geolocation.getCurrentPosition(this.setPosition);
           } else {
             this.error = "Localização geográfica indisponível";
           }
         },
+        fetchPosition(){
+          window.navigator.geolocation.getCurrentPosition(this.setPosition);
+        },
         setPosition(position){
           this.position = position
+          const {
+            accuracy,
+            altitude,
+            altitudeAccuracy,
+            heading,
+            latitude,
+            longitude,
+            speed
+          } = position.coords
+          this.coords = {
+            accuracy,
+            altitude,
+            altitudeAccuracy,
+            heading,
+            latitude,
+            longitude,
+            speed
+          }
         }
       },
       mounted(){
