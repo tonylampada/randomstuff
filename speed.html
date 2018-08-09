@@ -16,21 +16,43 @@
 <body>
   <div id="app" class="container" style="padding: 20px;">
     <span v-if="error">Erro: {{error}}</span>
-    <pre>coords3: {{coords}}</pre>
+    <pre>coords2: {{coords}}</pre>
+    <h1> speed: {{speed}}</h1>
   </div>
 
   <script>
+
+  function calcDistance(p1, p2){
+    const R = 6371; // km
+    const [φ1, φ2, λ1, λ2] = [p1.latitude, p2.latitude, p1.longitude, p2.longitude].map(α => α.toRadians())
+    const Δφ = φ2 - φ1
+    const Δλ = λ2 - λ1
+
+    const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+              Math.cos(φ1) * Math.cos(φ2) *
+              Math.sin(Δλ/2) * Math.sin(Δλ/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+    const d = R * c;
+    return d
+  }
+
     var app = new Vue({
       el: '#app',
       data: {
         error: '',
         coords: null,
+        lastCoords: null,
       },
       computed: {
-        tarefasOrdenadas(){
-          return this.tarefas.sort(function(t1, t2){
-            return t2.created - t1.created
-          })
+        speed(){
+          const {coords, lastCoords} = this
+          if(coords && lastCoords){
+            const distance = calcDistance(lastCoords, coords)
+            const Δt = (coords.ts - lastCoords.ts) / 3600000.0
+            this.speed = distance / Δt
+          }
+          return 0
         }
       },
       methods: {
@@ -57,6 +79,7 @@
             longitude,
             speed
           } = position.coords
+          this.lastCoords = this.coords
           this.coords = {
             accuracy,
             altitude,
@@ -64,7 +87,8 @@
             heading,
             latitude,
             longitude,
-            speed
+            speed,
+            ts: new Date().getTime()
           }
           // setTimeout(this.fetchPosition, 5000)
         }
