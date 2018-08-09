@@ -16,7 +16,7 @@
 <body>
   <div id="app" class="container" style="padding: 20px;">
     <span v-if="error">Erro: {{error}}</span>
-    <pre>coords2: {{coords}}</pre>
+    <pre>coords1: {{coords}}</pre>
     <h1> speed: {{speed}}</h1>
   </div>
 
@@ -66,7 +66,7 @@
         },
         fetchPosition(){
           const options = {enableHighAccuracy: true}
-          window.navigator.geolocation.watchPosition(this.setPosition, null, options);
+          window.navigator.geolocation.getCurrentPosition(this.setPosition, null, options);
         },
         setPosition(position){
           this.position = position
@@ -90,7 +90,7 @@
             speed,
             ts: new Date().getTime()
           }
-          // setTimeout(this.fetchPosition, 5000)
+          setTimeout(this.fetchPosition, 5000)
         }
       },
       mounted(){
