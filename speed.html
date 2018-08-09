@@ -16,7 +16,7 @@
 <body>
   <div id="app" class="container" style="padding: 20px;">
     <span v-if="error">Erro: {{error}}</span>
-    <pre>coords1: {{coords}}</pre>
+    <pre>coords2: {{coords}}</pre>
     <h1> speed: {{speed}}</h1>
     <h1> count: {{count}}</h1>
   </div>
@@ -25,7 +25,7 @@
 
   function calcDistance(p1, p2){
     const R = 6371; // km
-    const [φ1, φ2, λ1, λ2] = [p1.latitude, p2.latitude, p1.longitude, p2.longitude].map(α => α.toRadians())
+    const [φ1, φ2, λ1, λ2] = [p1.latitude, p2.latitude, p1.longitude, p2.longitude].map(α => α * Math.PI / 180)
     const Δφ = φ2 - φ1
     const Δλ = λ2 - λ1
 
