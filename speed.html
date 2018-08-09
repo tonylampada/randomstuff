@@ -16,7 +16,7 @@
 <body>
   <div id="app" class="container" style="padding: 20px;">
     <span v-if="error">Erro: {{error}}</span>
-    <pre>coords: {{coords}}</pre>
+    <pre>coords2: {{coords}}</pre>
   </div>
 
   <script>
@@ -38,13 +38,13 @@
           var x = document.getElementById("demo");
           if (window.navigator.geolocation) {
             this.fetchPosition()
-            window.navigator.geolocation.getCurrentPosition(this.setPosition);
           } else {
             this.error = "Localização geográfica indisponível";
           }
         },
         fetchPosition(){
-          window.navigator.geolocation.getCurrentPosition(this.setPosition);
+          const options = {enableHighAccuracy: true}
+          window.navigator.geolocation.getCurrentPosition(this.setPosition, options);
         },
         setPosition(position){
           this.position = position
