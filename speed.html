@@ -18,6 +18,7 @@
     <span v-if="error">Erro: {{error}}</span>
     <pre>coords1: {{coords}}</pre>
     <h1> speed: {{speed}}</h1>
+    <h1> count: {{count}}</h1>
   </div>
 
   <script>
@@ -43,6 +44,7 @@
         error: '',
         coords: null,
         lastCoords: null,
+        count: 0,
       },
       computed: {
         speed(){
@@ -91,6 +93,7 @@
             ts: new Date().getTime()
           }
           setTimeout(this.fetchPosition, 5000)
+          this.count++
         }
       },
       mounted(){
