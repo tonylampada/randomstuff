@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css' rel='stylesheet' />
+  </head>
+  <body>
+    <div id='map' style='width: 1024px; height: 768px;'></div>
+    <!--script src="./data.js"></script -->
+    <script>
+    //mapboxgl.accessToken = 'xxx';
+    var map = window.MAP = new mapboxgl.Map({
+      container: 'map',
+      //style: 'mapbox://styles/mapbox/satellite-streets-v10'
+      style: {
+          "version": 8,
+          "name": "Teste",
+          "sources": {
+            // "example": {
+            //   "type": "raster",
+            //   "tileSize": 256,
+              // "url": "http://tsa.spacetimeanalytics.com/LC8_220_20160730/{z}/{x}/{y}.png",
+              // "tiles": [
+              //     "http://tsa.spacetimeanalytics.com/LC8_220_20160730/{z}/{x}/{y}.png",
+              //     "http://tsb.spacetimeanalytics.com/LC8_220_20160730/{z}/{x}/{y}.png",
+              //     "http://tsc.spacetimeanalytics.com/LC8_220_20160730/{z}/{x}/{y}.png",
+              // ],
+            // }
+          },
+          "layers": [   ]
+      }
+    });
+    map.on('load', function () {
+      map.addLayer({
+          "id": "talhoes",
+          "type": "line",
+          "source": {
+            type: 'geojson',
+            data: window.geojson,
+          },
+      });
+  });
+    </script>
+  </body>
+</html>
