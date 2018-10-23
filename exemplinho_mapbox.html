@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js"></script>
+    <link rel="stylesheet" type="text/css" src="https://api.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css"></link>
+  </head>
+  <body>
+    <div id="map" style="width: 100%; height:100%"></div>
+    <script>
+      const mapOptions = {
+        container: 'map',
+        center: [-46.0030999, -23.1891287],
+        zoom: 6,
+        style: {
+          version: 8,
+          name: 'Buser',
+          glyphs: 'http://fonts.openmaptiles.org/{fontstack}/{range}.pbf',
+          sources: {
+            osm: {
+              type: 'raster',
+              tileSize: 256,
+              scheme: 'xyz',
+              tiles: [
+                'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                'https://b.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                'https://c.tile.openstreetmap.org/{z}/{x}/{y}.png'
+              ]
+            }
+          },
+          layers: [
+            {
+              id: 'osm',
+              source: 'osm',
+              type: 'raster'
+            }
+          ]
+        }
+      }
+      window.MAP = this.map = new window.mapboxgl.Map(mapOptions)
+    </script>
+  </body>
+</html>
