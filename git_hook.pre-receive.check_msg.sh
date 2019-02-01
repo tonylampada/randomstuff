@@ -5,7 +5,12 @@
 REGEX='^@[0-9]+ .*$'
 
 while read OLD_VALUE NEW_VALUE REFNAME ; do
-  for rev in $(git rev-list $OLD_VALUE..$NEW_VALUE); do
+  if [ "$OLD_VALUE" -eq 0 ]; then
+    revs=$(git rev-list $(git for-each-ref --format='%(refname)' refs/heads/* | grep -v $REFNAME | sed 's/^/\^/') $NEW_VALUE)
+  else
+    revs=$(git rev-list $OLD_VALUE..$NEW_VALUE)
+  fi
+  for rev in $revs; do
     msg=$(git cat-file commit $rev | sed '1,/^$/d')
     echo $msg | egrep -q "$REGEX"
     checkstatus=$?
