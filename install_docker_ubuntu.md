@@ -1,4 +1,4 @@
-# Instalação de docker e docker-compose no ubuntu.
+# Instalação de docker e docker-compose no ubuntu / mint.
 
 Esse procedimento foi tirado desses links:
 
@@ -20,10 +20,14 @@ sudo apt-get install \
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
+# Se for ubuntu:
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
+
+# Se for mint
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 
 sudo apt-get update
 sudo apt-get install docker-ce
