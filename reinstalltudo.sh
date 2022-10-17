@@ -7,7 +7,7 @@ sudo apt upgrade
 sudo apt install terminator curl git xfce* htop dirmngr gnupg apt-transport-https ca-certificates software-properties-common
 sudo apt install gcc libffi-dev libgeos-dev libmemcached-dev libpq-dev net-tools python3-gpg vim whois 
 sudo apt install -y --no-install-recommends make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-sudo apt install gitk git-cola
+sudo apt install gitk git-cola arandr zip unzip
 
 # sublime
 curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
