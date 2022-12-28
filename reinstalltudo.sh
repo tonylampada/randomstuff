@@ -31,3 +31,7 @@ sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker $USER
 sudo apt install docker-compose-plugin
+
+# links simbolicos
+echo `source $HOME/bin/bashrc` >> ~/.bashrc
+ln -s ~/Dropbox/bin ~/bin
